@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinite News Station - June 22nd, 2026</title>
+<link rel="icon" href="favicon.ico">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a2d9d5c66d.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#181624;color:#222;overflow-x:hidden}
+
+.hero{
+    height:40vh;
+    background:url('Bandeau1.jpg') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+@media(max-width:768px){.hero{height:25vh}}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.35);
+}
+.hero img{
+    position:relative;
+    z-index:2;
+    max-height:70%;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    backdrop-filter:blur(10px);
+    background:linear-gradient(90deg,#26cfed,#000338);
+    z-index:1000;
+}
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    padding:12px 20px;
+}
+.nav-links{
+    display:flex;
+    gap:30px;
+}
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    position:relative;
+}
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    bottom:-5px;
+    left:0;
+    width:0;
+    height:2px;
+    background:white;
+    transition:0.3s;
+}
+.nav-links a:hover::after{width:100%}
+
+.search-container{
+    width:100%;
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    background:#181624;
+}
+
+.search-container input{
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    width:300px;
+    max-width:90%;
+    font-size:14px;
+}
+
+.fleet{
+    width:100%;
+    margin:80px auto;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:0 20px;
+}
+
+.card{
+    background:#000338;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    transform:translateY(60px);
+    opacity:0;
+    transition:1.2s ease;
+}
+
+.card.visible{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.card-content{
+    padding:35px;
+    color:white;
+}
+
+.card-content h1{
+    color:white;
+    margin-bottom:10px;
+}
+
+.card-content h2{
+    color:#cbd5e1;
+    font-size:18px;
+    font-weight:400;
+    margin-bottom:25px;
+}
+
+.card-content p{
+    color:white;
+    line-height:1.8;
+    margin-bottom:20px;
+}
+
+.news-image{
+    width:100%;
+    max-width:900px;
+    display:block;
+    margin:25px auto;
+    border-radius:12px;
+}
+
+.back-button{
+    display:inline-block;
+    margin-bottom:30px;
+    padding:12px 18px;
+    background:#26cfed;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.back-button:hover{
+    opacity:0.85;
+}
+
+.author{
+    color:#cbd5e1;
+    margin:20px 0 30px 0;
+    font-style:italic;
+}
+
+.bottom-banner{
+    height:40vh;
+    background:url('Bandeaubas.jpg') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:22px;
+    font-weight:600;
+}
+
+.footer{
+    text-align:center;
+    padding:20px;
+    background:#000338;
+    color:white;
+}
+
+.footer .icons{
+    margin-bottom:10px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    font-size:20px;
+}
+
+.footer-link{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.footer-link:hover{
+    transform:scale(1.2);
+    color:#94a3b8;
+}
+
+.footer .legal{
+    font-size:12px;
+    opacity:0.7;
+    line-height:1.4;
+    max-width:900px;
+    margin:auto;
+}
+
+@media(max-width:768px){
+    .fleet{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="https://hugocnrd.github.io/infinite-news-station/home.html"><i class="fas fa-info-circle"></i>Home</a>
+            <a href="https://hugocnrd.github.io/infinite-news-station/newsletter.html"><i class="fas fa-plane"></i>Newsletter</a>
+            <a href="https://hugocnrd.github.io/infinite-news-station/articles.html"><i class="fas fa-star"></i>Articles</a>
+            <a href="https://hugocnrd.github.io/infinite-news-station/us.html"><i class="fas fa-users"></i>Who we are</a>
+            <a href="https://hugocnrd.github.io/infinite-news-station/contact.html"><i class="fas fa-paper-plane"></i>Contact</a>
+        </div>
+    </div>
+</nav>
+
+<div class="search-container">
+</div>
+
+<section class="fleet">
+
+<div class="card visible">
+<div class="card-content">
+
+<a class="back-button" href="https://hugocnrd.github.io/infinite-news-station/newsletter.html">
+<i class="fas fa-arrow-left"></i> Back to Newsletter
+</a>
+
+<h1>Newsletter for June 22nd, 2026</h1>
+
+<h2>
+A350-1000 Development, A321neo Progress, Infinite Live,
+Qantas Project Sunrise and More
+</h2>
+
+<img src="2026:06:22.jpg" class="news-image">
+
+<div class="author">
+By Magicalchesecat
+</div>
+
+<p>
+The Airbus A350-1000 in Infinite Flight.
+</p>
+
+<p>
+Thanks Frank_Cullimore,Gwengo and Jaxx for these pics, that can be foubnd entirely in the IFC version of this newsletter. Look at this beautiful Etihad A350-1000.
+</p>
+
+<img src="2026:06:22.jpg" class="news-image">
+
+<p>
+The excitement continues building for the A350-1000 as more and more liveries are revealed.
+The Ethiopian A350-1000 was spotted by Jaxx on June 12th while flying over Nigeria.
+The French Bee A350-1000 was spotted by Jaxx at FMEE on June 16th.
+The aircraft seems to be fully modeled, so it is only a matter of time before it is released.
+</p>
+
+<p>
+The A321neo in Infinite Flight.
+</p>
+
+<p>
+Thanks to Flying_Chris for these pics.
+</p>
+
+<img src="2026:06:22-3.jpg" class="news-image">
+
+<p>
+This was spotted by Flying_Chris at KSJC on June 12th.
+The fuselage seems to be fully modeled whilst the wings are not modeled yet.
+From my knowledge, the A321neo will be released first.
+</p>
+
+<p>
+The new Anti-AI and one-purpose device trend.
+</p>
+
+<p>
+AI was cool when it first came out but as it grew, the actual effects of AI started to sink in and now it has gotten to the point where people, myself included, have become fed up with AI.
+
+<p>
+But companies on the other hand are forcing AI onto employees. A study shows that you are 32% more likely to get laid off if you do not embrace AI into your workspace.
+</p>
+
+<p>
+And the people have had enough of companies shoving AI and subscriptions down our throats, and this is why people are moving to one-purpose devices.
+Devices like the iPod and Nintendo DS have seen a spike in sales and demand, and even modern handheld consoles are getting some love.
+For example, the AYN Thor is one of the most popular handheld consoles currently.
+</p>
+
+<p>
+And dear reader, you do not have to worry, The Infinite News Station will never use AI.
+One interesting thing is that companies are still not getting the message, which is really weird because people are loud about their thoughts on AI.
+My stand on AI is that it has gone too far. We need to stop before it ruins more things.
+</p>
+
+<p>
+Infinite Live.
+</p>
+
+<p>
+Infinite Live was announced a couple weeks ago and I am over the moon about it because it adds a layer to Infinite Flight that I love.
+I mean, “Every aircraft has a story” alone excites me so much.
+For more details you can check out the full blog by Infinite Flight at "Introducing the Next Chapter of Infinite Flight Live".
+</p>
+
+<p>
+I could not be more excited for it. Let me know your thoughts on Infinite Live.
+</p>
+
+<p>
+Qantas's A350-1000 ULR.
+</p>
+
+<img src="2026:06:22-2.jpg" class="news-image">
+
+<p>
+Look at this beauty.
+This beautiful aircraft will fly from Sydney to London starting October 2027.
+Meanwhile, Qantas has not confirmed any dates for the Sydney to New York flight, only stating that it will fly later in 2027.
+</p>
+
+<p>
+This will be a historic feat for Australia, aviation and Qantas.
+What are your thoughts on the 22-hour flights?
+</p>
+
+<p>
+Android 17 release date for Pixels.
+</p>
+
+<p>
+Google has released Android 17 for Pixel devices with many features, most notably the new multitasking feature called “Bubbles”.
+There are also many productivity, gaming and security improvements included in this release.
+</p>
+
+<p>
+This update is currently only available for Pixel devices.
+</p>
+
+<p>
+Austrian Grand Prix.
+</p>
+
+<p>
+After the Barcelona-Catalunya Grand Prix, in which Sir Lewis Hamilton secured his first win for Scuderia Ferrari, Formula 1 moves on with its European tour to the Austrian Grand Prix this upcoming weekend.
+</p>
+
+<p>
+After a disappointing race for championship leader Kimi Antonelli, he hopes to make a comeback this weekend.
+Meanwhile Max Verstappen and Red Bull Oracle Racing seem to be struggling with both cars.
+To make matters worse, the FIA has determined that Red Bull has the best engine on the grid.
+</p>
+
+<p>
+Red Bull's response to that is:
+“The math is simply wrong.”
+</p>
+
+<p>
+Overall the upcoming weekend seems very promising.
+What are your thoughts?
+</p>
+
+<p>
+Saudi Arabia's new airline: Riyadh Air.
+</p>
+
+<p>
+Riyadh Air completed its first passenger service on June 10th, 2026 from Riyadh to London Heathrow using a Boeing 787-9.
+The beautiful violet livery is a stand-out amongst the aviation industry.
+</p>
+
+<p>
+What are your thoughts on Riyadh Air?
+</p>
+
+<p>
+AI 171.
+</p>
+
+<p>
+On June 12th, 2025, a Boeing 787-8 Dreamliner crashed shortly after takeoff in Ahmedabad, India.
+Now over a year after the accident, only very little official information has been released to the public.
+</p>
+
+<p>
+The final report was delayed by the AAIB and they promised an Interim Report instead.
+It was supposed to come out on June 12th, 2026, the anniversary of the accident.
+Instead we got a statement saying nothing important and then a media statement by the Indian Minister of Aviation saying:
+</p>
+
+<p>
+“The investigation is ongoing.”
+</p>
+
+<p>
+There have been many theories, but none of them really seem to factor in all the evidence.
+My personal opinion is that the fact is:
+We don't know.
+</p>
+
+<p>
+As much as we like to make theories, we cannot ignore the fact that we know very little, and it is not enough to make a valid theory.
+Using unofficial data that is not from the FDR or the investigators is dangerous territory.
+</p>
+
+<p>
+We should not be afraid or ashamed of saying we do not know.
+</p>
+<p>
+The 777X faces trouble once again.
+</p>
+
+<p>
+The FAA has announced that it likely will not certify the long-awaited Boeing 777X this year.
+This puts the 2027 delivery date at risk.
+</p>
+
+<p>
+The FAA has said:
+“The 777X will be certified after the 737 MAX 7 and MAX 10, which are expected to pass trials by the end of the year.”
+</p>
+
+<p>
+Launch customer Lufthansa is eager for the 777X's delivery.
+It has now been 6 years past the original entry-into-service date and 14 years since the official launch in 2013.
+</p>
+
+<p>
+What are your thoughts on the 777X?
+</p>
+
+<h2 style="margin-top:40px;">Sources</h2>
+
+<p>
+Thanks to Jaxx, Gwengo and Frank_Cullimore for the A350-1000 pictures.
+</p>
+
+<p>
+Thanks to Flying_Chris for the A321neo pictures.
+</p>
+
+<p>
+F1:
+NEED TO KNOW: The most important facts, stats and trivia ahead of the Austrian Grand Prix.
+</p>
+
+<p>
+Qantas A350-1000:
+Airbus A350 Project Sunrise.
+</p>
+
+<p>
+777X:
+https://simpleflying.com/boeing-777x-certification-delay-2027-delivery-risk/
+</p>
+
+<p>
+Riyadh Air:
+Riyadh Air - Wikipedia
+</p>
+
+<p>
+AI 171:
+Air India Flight 171 - Wikipedia
+</p>
+
+<p>
+Android 17:
+Android 17: Release Date, New Features & Eligible Phones - Tech Advisor
+</p>
+
+<h2 style="margin-top:40px;">Staff</h2>
+
+<p>
+Magicalchesecat and Arendiuz.
+</p>
+
+<p>
+Thank you for reading.
+</p>
+
+<p>
+Sincerely,
+<br>
+Magicalchesecat
+</p>
+
+</div>
+</div>
+
+<br/>
+<br/>
+</section>
+
+<div class="footer">
+    <div class="icons">
+        <a href="#" class="footer-link"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="footer-link"><i class="fas fa-plane"></i></a>
+        <a href="mailto:#" class="footer-link"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <p class="legal">
+      Infinite News Station<br>
+      Infinite News Station is an independant media and is not affiliated with, endorsed by, or sponsored by Infinite Flight or any real-world company.
+    </p>
+</div>
+
+<script>
+const cards=document.querySelectorAll('.card');
+
+const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+        }
+    });
+},{threshold:0.2});
+
+cards.forEach(card=>observer.observe(card));
+</script>
+
+</body>
+</html>
