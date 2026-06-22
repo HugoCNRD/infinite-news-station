@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Infinite News Station - Us</title>
+<title>Infinite News Station - Contact</title>
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -24,13 +24,11 @@ body{
     overflow-x:hidden;
 }
 
-
 .hero{
     height:40vh;
     width:100%;
     background:url('Bandeaustaff.jpg') center center / cover no-repeat;
 }
-
 
 nav{
     position:sticky;
@@ -75,45 +73,77 @@ nav{
     width:100%;
 }
 
+/* CONTACT SECTION */
 
 .section{
     width:80%;
-    margin:100px auto;
+    max-width:900px;
+    margin:80px auto;
     display:flex;
+    flex-direction:column;
     align-items:center;
-    justify-content:space-between;
-    gap:40px;
+    gap:25px;
 }
 
-
-.box{
-    width:45%;
-    padding:35px;
-    border-radius:18px;
+.section h3{
     color:white;
-    background:linear-gradient(135deg,#26cfed,#000338);
-    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    font-size:2rem;
     text-align:center;
 }
 
-
-.icon-side{
-    width:45%;
+#adhesionForm{
+    width:100%;
+    background:white;
+    padding:35px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
     display:flex;
-    justify-content:center;
-    align-items:center;
+    flex-direction:column;
+    gap:15px;
 }
 
-.icon-side a img{
-    max-width:180px;
-    border-radius:50%;
+#adhesionForm label{
+    color:#000338;
+    font-weight:600;
+}
+
+#adhesionForm input,
+#adhesionForm textarea{
+    width:100%;
+    padding:12px 15px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    font-size:15px;
+    outline:none;
     transition:0.3s;
 }
 
-.icon-side a img:hover{
-    transform:scale(1.08);
+#adhesionForm input:focus,
+#adhesionForm textarea:focus{
+    border-color:#26cfed;
+    box-shadow:0 0 8px rgba(38,207,237,0.3);
 }
 
+#adhesionForm textarea{
+    min-height:180px;
+    resize:vertical;
+}
+
+#adhesionForm button{
+    background:linear-gradient(135deg,#26cfed,#000338);
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+#adhesionForm button:hover{
+    transform:translateY(-2px);
+}
 
 .footer{
     text-align:center;
@@ -149,26 +179,25 @@ nav{
     color:#94a3b8;
 }
 
-
 @media(max-width:768px){
+
     .section{
-        flex-direction:row;
+        width:90%;
+        margin:50px auto;
+    }
+
+    .section h3{
+        font-size:1.6rem;
+    }
+
+    .nav-links{
         gap:15px;
-        margin:40px auto;
+        flex-wrap:wrap;
+        justify-content:center;
     }
 
-    .box{
-        width:60%;
+    #adhesionForm{
         padding:20px;
-        font-size:14px;
-    }
-
-    .icon-side{
-        width:40%;
-    }
-
-    .icon-side a img{
-        max-width:120px;
     }
 }
 </style>
@@ -176,45 +205,115 @@ nav{
 
 <body>
 
+<div class="hero"></div>
 
 <nav>
     <div class="nav-container">
         <div class="nav-links">
-            <a href="https://hugocnrd.github.io/infinite-news-station/home.html"><i class="fas fa-info-circle"></i>Home</a>
-            <a href="https://hugocnrd.github.io/infinite-news-station/newsletter.html"><i class="fas fa-plane"></i>Newsletter</a>
-            <a href="https://hugocnrd.github.io/infinite-news-station/articles.html"><i class="fas fa-star"></i>Articles</a>
-            <a href="https://hugocnrd.github.io/infinite-news-station/us.html"><i class="fas fa-users"></i>Who we are</a>
-            <a href="https://hugocnrd.github.io/infinite-news-station/contact.html"><i class="fas fa-paper-plane"></i>Contact</a>
+            <a href="https://hugocnrd.github.io/infinite-news-station/home.html">
+                <i class="fas fa-info-circle"></i> Home
+            </a>
+
+            <a href="https://hugocnrd.github.io/infinite-news-station/newsletter.html">
+                <i class="fas fa-plane"></i> Newsletter
+            </a>
+
+            <a href="https://hugocnrd.github.io/infinite-news-station/articles.html">
+                <i class="fas fa-star"></i> Articles
+            </a>
+
+            <a href="https://hugocnrd.github.io/infinite-news-station/us.html">
+                <i class="fas fa-users"></i> Who we are
+            </a>
+
+            <a href="https://hugocnrd.github.io/infinite-news-station/contact.html">
+                <i class="fas fa-paper-plane"></i> Contact
+            </a>
         </div>
     </div>
 </nav>
 
 <section class="section">
-  <h3>Contact us !</h3>
-  <form id="adhesionForm">
-    <label for="nom">Infinite Flight Community user name</label>
-    <input type="text" id="nom" name="Nom" placeholder="Do not include @" required />
 
-    <label for="email">Subject of your message</label>
-    <input type="email" id="email" name="Email" required />
+    <h3>Contact us!</h3>
 
-    <label for="message">Message</label>
-    <textarea id="message" name="Message" placeholder="You can write what you want to tell us"></textarea>
+    <form
+        id="adhesionForm"
+        action="https://formsubmit.co/hugobatigne@gmail.com"
+        method="POST"
+    >
 
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New Contact Form Submission">
 
+        <label for="nom">
+            Infinite Flight Community user name
+        </label>
+
+        <input
+            type="text"
+            id="nom"
+            name="Username"
+            placeholder="Do not include @"
+            required
+        >
+
+        <label for="subject">
+            Subject of your message
+        </label>
+
+        <input
+            type="text"
+            id="subject"
+            name="Subject"
+            placeholder="Enter the subject"
+            required
+        >
+
+        <label for="message">
+            Message
+        </label>
+
+        <textarea
+            id="message"
+            name="Message"
+            placeholder="You can write what you want to tell us"
+            required
+        ></textarea>
+
+        <button type="submit">
+            Send message
+        </button>
+
+    </form>
+
+</section>
 
 <div class="footer">
+
     <div class="icons">
-        <a href="#" class="footer-link"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="footer-link"><i class="fas fa-plane"></i></a>
-        <a href="mailto:#" class="footer-link"><i class="fas fa-envelope"></i></a>
+        <a href="#" class="footer-link">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="#" class="footer-link">
+            <i class="fas fa-plane"></i>
+        </a>
+
+        <a href="mailto:#" class="footer-link">
+            <i class="fas fa-envelope"></i>
+        </a>
     </div>
 
     <p class="legal">
-      Infinite News Station<br>
-      Infinite News Station is an independant media and is not affiliated with, endorsed by, or sponsored by Infinte Flight or any real-world company.
+        Infinite News Station<br>
+        Infinite News Station is an independant media and is not affiliated
+        with, endorsed by, or sponsored by Infinite Flight or any real-world
+        company.
     </p>
+
 </div>
 
 </body>
 </html>
+
