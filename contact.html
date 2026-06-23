@@ -181,23 +181,71 @@ nav{
 
 @media(max-width:768px){
 
-    .section{
-        width:90%;
-        margin:50px auto;
+    .hero{
+        height:22vh;
+        background-position:center;
     }
 
-    .section h3{
-        font-size:1.6rem;
+    .nav-container{
+        padding:12px 15px;
     }
 
     .nav-links{
-        gap:15px;
+        gap:12px;
         flex-wrap:wrap;
         justify-content:center;
+        text-align:center;
+        font-size:14px;
+        line-height:1.5;
+    }
+
+    .section{
+        width:92%;
+        margin:40px auto;
+    }
+
+    .section h3{
+        font-size:1.8rem;
+        text-align:center;
     }
 
     #adhesionForm{
-        padding:20px;
+        padding:22px 18px;
+        border-radius:16px;
+        gap:14px;
+    }
+
+    #adhesionForm label{
+        font-size:14px;
+    }
+
+    #adhesionForm input,
+    #adhesionForm textarea{
+        font-size:16px; /* évite le zoom automatique iPhone */
+        padding:14px;
+    }
+
+    #adhesionForm textarea{
+        min-height:160px;
+    }
+
+    #adhesionForm button{
+        padding:15px;
+        font-size:16px;
+    }
+
+    .footer{
+        padding:25px 15px;
+    }
+
+    .footer .icons{
+        gap:25px;
+        font-size:22px;
+    }
+
+    .footer .legal{
+        font-size:11px;
+        line-height:1.6;
     }
 }
 </style>
