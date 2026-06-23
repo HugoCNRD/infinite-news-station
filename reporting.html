@@ -275,12 +275,19 @@ function sendToEditor(){
 <body>
 
 <script>
+
 const password = prompt("INS Reporting Password");
 
 if(password !== "#INS2026-reporting4IF"){
-    document.body.innerHTML = "";
+
     alert("Access denied");
+
+    window.location.replace(
+        "https://hugocnrd.github.io/infinite-news-station/home.html"
+    );
+
 }
+
 </script>
 
 <div class="container">
