@@ -118,135 +118,158 @@ let sectionCount = 0;
 
 function addSection(){
 
-    sectionCount++;
+```
+sectionCount++;
 
-    const container = document.getElementById("sections");
+const container = document.getElementById("sections");
 
-    const div = document.createElement("div");
+const div = document.createElement("div");
 
-    div.className = "section-block";
+div.className = "section-block";
 
-    div.innerHTML = 
-        <label>Section Title</label>
-        <input type="text" class="section-title-input">
+div.innerHTML = `
+    <label>Section Title</label>
+    <input type="text" class="section-title-input">
 
-        <label>Credit</label>
-        <input type="text" class="section-credit-input">
+    <label>Credit</label>
+    <input type="text" class="section-credit-input">
 
-        <label>Paragraph</label>
-        <textarea class="section-text-input"></textarea>
-    ;
+    <label>Paragraph</label>
+    <textarea class="section-text-input"></textarea>
+`;
 
-    container.appendChild(div);
+container.appendChild(div);
+```
+
 }
 
 function buildHTML(){
 
-    const title =
-        document.getElementById("title").value;
+```
+const title =
+    document.getElementById("title").value;
 
-    const subtitle =
-        document.getElementById("subtitle").value;
+const subtitle =
+    document.getElementById("subtitle").value;
 
-    const author =
-        document.getElementById("author").value;
+const author =
+    document.getElementById("author").value;
 
-    let html = "";
+let html = "";
 
-    html += `<h1>${title}</h1>\n\n`;
+html += `<h1>${title}</h1>\n\n`;
 
-    html += `<h2>${subtitle}</h2>\n\n`;
+html += `<h2>${subtitle}</h2>\n\n`;
 
-    html += `<div class="author">\n`;
-    html += `By ${author}\n`;
-    html += `</div>\n\n`;
+html += `<div class="author">\n`;
+html += `By ${author}\n`;
+html += `</div>\n\n`;
 
-    const titles =
-        document.querySelectorAll(".section-title-input");
+const titles =
+    document.querySelectorAll(".section-title-input");
 
-    const credits =
-        document.querySelectorAll(".section-credit-input");
+const credits =
+    document.querySelectorAll(".section-credit-input");
 
-    const texts =
-        document.querySelectorAll(".section-text-input");
+const texts =
+    document.querySelectorAll(".section-text-input");
 
-    for(let i=0;i<titles.length;i++){
+for(let i=0;i<titles.length;i++){
 
-        html += `<h2 class="section-title">\n`;
-        html += titles[i].value;
-        html += `\n</h2>\n\n`;
+    html += `<h2 class="section-title">\n`;
+    html += titles[i].value;
+    html += `\n</h2>\n\n`;
 
-        if(credits[i].value.trim() !== ""){
+    if(credits[i].value.trim() !== ""){
 
-            html += `<p class="credit">\n`;
-            html += credits[i].value;
-            html += `\n</p>\n\n`;
-
-        }
-
-        const paragraphs =
-            texts[i].value.split("\n");
-
-        paragraphs.forEach(p=>{
-
-            if(p.trim() !== ""){
-
-                html += `<p>\n`;
-                html += p;
-                html += `\n</p>\n\n`;
-
-            }
-
-        });
+        html += `<p class="credit">\n`;
+        html += credits[i].value;
+        html += `\n</p>\n\n`;
 
     }
 
-    const sourceText =
-        document.getElementById("sources").value;
+    const paragraphs =
+        texts[i].value.split("\n");
 
-    const sourceLines =
-        sourceText.split("\n");
+    paragraphs.forEach(p=>{
 
-    html += `<h2 class="section-title">\n`;
-    html += `Sources\n`;
-    html += `</h2>\n\n`;
+        if(p.trim() !== ""){
 
-    html += `<ul class="sources-list">\n`;
-
-    sourceLines.forEach(source=>{
-
-        if(source.trim() !== ""){
-
-            html += `<li>${source}</li>\n`;
+            html += `<p>\n`;
+            html += p;
+            html += `\n</p>\n\n`;
 
         }
 
     });
 
-    html += `</ul>\n`;
+}
 
-    return html;
+const sourceText =
+    document.getElementById("sources").value;
+
+const sourceLines =
+    sourceText.split("\n");
+
+html += `<h2 class="section-title">\n`;
+html += `Sources\n`;
+html += `</h2>\n\n`;
+
+html += `<ul class="sources-list">\n`;
+
+sourceLines.forEach(source=>{
+
+    if(source.trim() !== ""){
+
+        html += `<li>${source}</li>\n`;
+
+    }
+
+});
+
+html += `</ul>\n`;
+
+return html;
+```
+
 }
 
 function generateHTML(){
 
-    document.getElementById("preview")
-        .textContent = buildHTML();
+```
+document.getElementById("preview")
+    .textContent = buildHTML();
+```
 
 }
 
 function copyHTML(){
 
-    navigator.clipboard.writeText(
-        buildHTML()
-    );
+```
+navigator.clipboard.writeText(
+    buildHTML()
+);
 
-    alert("HTML copied");
+alert("HTML copied");
+```
+
+}
+
+function generateSlug(title){
+
+```
+return title
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9 ]/g,'')
+    .replace(/\s+/g,'-');
+```
 
 }
 
 async function sendToEditor(){
 
+```
 const html = buildHTML();
 
 const title =
@@ -292,18 +315,19 @@ form.method = "POST";
 form.action =
 "https://formsubmit.co/hugobatigne@gmail.com";
 
-form.innerHTML = 
+form.innerHTML = `
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_subject" value="New INS Article Submission">
     <textarea name="ArticleHTML">${html}</textarea>
-;
+`;
 
 document.body.appendChild(form);
 
 form.submit();
-
+```
 
 }
+
 
 
     const form = document.createElement("form");
