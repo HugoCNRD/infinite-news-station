@@ -251,6 +251,35 @@ function sendToEditor(){
 
     const html = buildHTML();
 
+    const title =
+    document.getElementById("title").value;
+
+const subtitle =
+    document.getElementById("subtitle").value;
+
+const author =
+    document.getElementById("author").value;
+
+const slug =
+    generateSlug(title) + ".html";
+
+fetch(
+    "https://script.google.com/macros/s/AKfycbwpK0TmQ4vcBkjCyJkNBlbcOIqlqazS00zCBHvpxtokoXHTHAT1HoEHdOCJGDZb6DTd/exec",
+    {
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            title:title,
+            subtitle:subtitle,
+            author:author,
+            slug:slug,
+            html:html
+        })
+    }
+);
+
     const form = document.createElement("form");
 
     form.method = "POST";
@@ -267,6 +296,16 @@ function sendToEditor(){
     document.body.appendChild(form);
 
     form.submit();
+
+}
+
+function generateSlug(title){
+
+    return title
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9 ]/g,'')
+        .replace(/\s+/g,'-');
 
 }
 </script>
