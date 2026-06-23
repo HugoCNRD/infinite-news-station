@@ -11,8 +11,18 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:#181624;color:#222;overflow-x:hidden}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#181624;
+    color:#222;
+    overflow-x:hidden;
+}
 
 .hero{
     height:40vh;
@@ -22,7 +32,12 @@ body{background:#181624;color:#222;overflow-x:hidden}
     justify-content:center;
     position:relative;
 }
-@media(max-width:768px){.hero{height:25vh}}
+
+@media(max-width:768px){
+    .hero{
+        height:25vh;
+    }
+}
 
 .hero::after{
     content:"";
@@ -30,6 +45,7 @@ body{background:#181624;color:#222;overflow-x:hidden}
     inset:0;
     background:rgba(0,0,0,0.35);
 }
+
 .hero img{
     position:relative;
     z-index:2;
@@ -43,6 +59,7 @@ nav{
     background:linear-gradient(90deg,#26cfed,#000338);
     z-index:1000;
 }
+
 .nav-container{
     max-width:1200px;
     margin:auto;
@@ -50,10 +67,12 @@ nav{
     justify-content:center;
     padding:12px 20px;
 }
+
 .nav-links{
     display:flex;
     gap:30px;
 }
+
 .nav-links a{
     color:white;
     text-decoration:none;
@@ -62,6 +81,7 @@ nav{
     gap:6px;
     position:relative;
 }
+
 .nav-links a::after{
     content:"";
     position:absolute;
@@ -72,7 +92,10 @@ nav{
     background:white;
     transition:0.3s;
 }
-.nav-links a:hover::after{width:100%}
+
+.nav-links a:hover::after{
+    width:100%;
+}
 
 .search-container{
     width:100%;
@@ -82,17 +105,8 @@ nav{
     background:#181624;
 }
 
-.search-container input{
-    padding:10px 15px;
-    border:none;
-    border-radius:8px;
-    width:300px;
-    max-width:90%;
-    font-size:14px;
-}
-
 .fleet{
-    width:100%;
+    max-width:1100px;
     margin:80px auto;
     display:grid;
     grid-template-columns:1fr;
@@ -116,7 +130,9 @@ nav{
 }
 
 .card-content{
-    padding:35px;
+    max-width:950px;
+    margin:auto;
+    padding:45px;
     color:white;
 }
 
@@ -133,16 +149,34 @@ nav{
 }
 
 .card-content p{
+    color:#f1f5f9;
+    font-size:17px;
+    line-height:1.9;
+    margin-bottom:24px;
+}
+
+.section-title{
     color:white;
-    line-height:1.8;
+    font-size:2rem;
+    font-weight:600;
+    margin-top:60px;
+    margin-bottom:25px;
+    border-top:1px solid rgba(255,255,255,.1);
+    padding-top:40px;
+}
+
+.credit{
+    color:#94a3b8;
+    font-style:italic;
+    font-size:14px;
     margin-bottom:20px;
 }
 
 .news-image{
     width:100%;
-    max-width:900px;
+    max-width:950px;
     display:block;
-    margin:25px auto;
+    margin:40px auto;
     border-radius:12px;
 }
 
@@ -216,7 +250,17 @@ nav{
 }
 
 @media(max-width:768px){
-    .fleet{grid-template-columns:1fr}
+    .fleet{
+        grid-template-columns:1fr;
+    }
+
+    .card-content{
+        padding:25px;
+    }
+
+    .section-title{
+        font-size:1.6rem;
+    }
 }
 </style>
 </head>
@@ -235,8 +279,7 @@ nav{
     </div>
 </nav>
 
-<div class="search-container">
-</div>
+<div class="search-container"></div>
 
 <section class="fleet">
 
@@ -260,11 +303,11 @@ Qantas Project Sunrise and More
 By Magicalchesecat
 </div>
 
-<p>
-The Airbus A350-1000 in Infinite Flight.
-</p>
+<h2 class="section-title">
+The Airbus A350-1000 in Infinite Flight
+</h2>
 
-<p>
+<p class="credit">
 Thanks Frank_Cullimore,Gwengo and Jaxx for these pics, that can be foubnd entirely in the IFC version of this newsletter. Look at this beautiful Etihad A350-1000.
 </p>
 
@@ -277,11 +320,11 @@ The French Bee A350-1000 was spotted by Jaxx at FMEE on June 16th.
 The aircraft seems to be fully modeled, so it is only a matter of time before it is released.
 </p>
 
-<p>
-The A321neo in Infinite Flight.
-</p>
+<h2 class="section-title">
+The A321neo in Infinite Flight
+</h2>
 
-<p>
+<p class="credit">
 Thanks to Flying_Chris for these pics.
 </p>
 
@@ -293,13 +336,13 @@ The fuselage seems to be fully modeled whilst the wings are not modeled yet.
 From my knowledge, the A321neo will be released first.
 </p>
 
-<p>
-The new Anti-AI and one-purpose device trend.
-</p>
+<h2 class="section-title">
+The new Anti-AI and one-purpose device trend
+</h2>
 
 <p>
 AI was cool when it first came out but as it grew, the actual effects of AI started to sink in and now it has gotten to the point where people, myself included, have become fed up with AI.
-
+</p>
 <p>
 But companies on the other hand are forcing AI onto employees. A study shows that you are 32% more likely to get laid off if you do not embrace AI into your workspace.
 </p>
@@ -316,9 +359,9 @@ One interesting thing is that companies are still not getting the message, which
 My stand on AI is that it has gone too far. We need to stop before it ruins more things.
 </p>
 
-<p>
-Infinite Live.
-</p>
+<h2 class="section-title">
+Infinite Live
+</h2>
 
 <p>
 Infinite Live was announced a couple weeks ago and I am over the moon about it because it adds a layer to Infinite Flight that I love.
@@ -330,9 +373,9 @@ For more details you can check out the full blog by Infinite Flight at "Introduc
 I could not be more excited for it. Let me know your thoughts on Infinite Live.
 </p>
 
-<p>
-Qantas's A350-1000 ULR.
-</p>
+<h2 class="section-title">
+Qantas's A350-1000 ULR
+</h2>
 
 <img src="2026:06:22-2.jpg" class="news-image">
 
@@ -347,9 +390,9 @@ This will be a historic feat for Australia, aviation and Qantas.
 What are your thoughts on the 22-hour flights?
 </p>
 
-<p>
-Android 17 release date for Pixels.
-</p>
+<h2 class="section-title">
+Android 17 release date for Pixels
+</h2>
 
 <p>
 Google has released Android 17 for Pixel devices with many features, most notably the new multitasking feature called “Bubbles”.
@@ -360,9 +403,9 @@ There are also many productivity, gaming and security improvements included in t
 This update is currently only available for Pixel devices.
 </p>
 
-<p>
-Austrian Grand Prix.
-</p>
+<h2 class="section-title">
+Austrian Grand Prix
+</h2>
 
 <p>
 After the Barcelona-Catalunya Grand Prix, in which Sir Lewis Hamilton secured his first win for Scuderia Ferrari, Formula 1 moves on with its European tour to the Austrian Grand Prix this upcoming weekend.
@@ -384,9 +427,9 @@ Overall the upcoming weekend seems very promising.
 What are your thoughts?
 </p>
 
-<p>
-Saudi Arabia's new airline: Riyadh Air.
-</p>
+<h2 class="section-title">
+Saudi Arabia's new airline: Riyadh Air
+</h2>
 
 <p>
 Riyadh Air completed its first passenger service on June 10th, 2026 from Riyadh to London Heathrow using a Boeing 787-9.
@@ -397,9 +440,9 @@ The beautiful violet livery is a stand-out amongst the aviation industry.
 What are your thoughts on Riyadh Air?
 </p>
 
-<p>
-AI 171.
-</p>
+<h2 class="section-title">
+AI 171
+</h2>
 
 <p>
 On June 12th, 2025, a Boeing 787-8 Dreamliner crashed shortly after takeoff in Ahmedabad, India.
@@ -430,9 +473,9 @@ Using unofficial data that is not from the FDR or the investigators is dangerous
 <p>
 We should not be afraid or ashamed of saying we do not know.
 </p>
-<p>
-The 777X faces trouble once again.
-</p>
+<h2 class="section-title">
+The 777X faces trouble once again
+</h2>
 
 <p>
 The FAA has announced that it likely will not certify the long-awaited Boeing 777X this year.
@@ -453,47 +496,24 @@ It has now been 6 years past the original entry-into-service date and 14 years s
 What are your thoughts on the 777X?
 </p>
 
-<h2 style="margin-top:40px;">Sources</h2>
+<h2 class="section-title">
+Sources
+</h2>
 
-<p>
-Thanks to Jaxx, Gwengo and Frank_Cullimore for the A350-1000 pictures.
-</p>
+<ul class="sources-list">
+    <li>Thanks to Jaxx, Gwengo and Frank_Cullimore for the A350-1000 pictures.</li>
+    <li>Thanks to Flying_Chris for the A321neo pictures.</li>
+    <li>F1: NEED TO KNOW: The most important facts, stats and trivia ahead of the Austrian Grand Prix.</li>
+    <li>Qantas A350-1000: Airbus A350 Project Sunrise.</li>
+    <li>777X: https://simpleflying.com/boeing-777x-certification-delay-2027-delivery-risk/</li>
+    <li>Riyadh Air: Riyadh Air - Wikipedia</li>
+    <li>AI 171: Air India Flight 171 - Wikipedia</li>
+    <li>Android 17: Android 17: Release Date, New Features & Eligible Phones - Tech Advisor</li>
+</ul>
 
-<p>
-Thanks to Flying_Chris for the A321neo pictures.
-</p>
-
-<p>
-F1:
-NEED TO KNOW: The most important facts, stats and trivia ahead of the Austrian Grand Prix.
-</p>
-
-<p>
-Qantas A350-1000:
-Airbus A350 Project Sunrise.
-</p>
-
-<p>
-777X:
-https://simpleflying.com/boeing-777x-certification-delay-2027-delivery-risk/
-</p>
-
-<p>
-Riyadh Air:
-Riyadh Air - Wikipedia
-</p>
-
-<p>
-AI 171:
-Air India Flight 171 - Wikipedia
-</p>
-
-<p>
-Android 17:
-Android 17: Release Date, New Features & Eligible Phones - Tech Advisor
-</p>
-
-<h2 style="margin-top:40px;">Staff</h2>
+<h2 class="section-title">
+Staff
+</h2>
 
 <p>
 Magicalchesecat and Arendiuz.
@@ -514,6 +534,7 @@ Magicalchesecat
 
 <br/>
 <br/>
+
 </section>
 
 <div class="footer">
@@ -524,15 +545,15 @@ Magicalchesecat
     </div>
 
     <p class="legal">
-      Infinite News Station<br>
-      Infinite News Station is an independant media and is not affiliated with, endorsed by, or sponsored by Infinite Flight or any real-world company.
+        Infinite News Station<br>
+        Infinite News Station is an independant media and is not affiliated with, endorsed by, or sponsored by Infinite Flight or any real-world company.
     </p>
 </div>
 
 <script>
-const cards=document.querySelectorAll('.card');
+const cards = document.querySelectorAll('.card');
 
-const observer=new IntersectionObserver(entries=>{
+const observer = new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
         if(entry.isIntersecting){
             entry.target.classList.add('visible');
