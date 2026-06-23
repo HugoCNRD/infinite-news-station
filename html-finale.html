@@ -43,13 +43,18 @@ let allArticles=[];
 
 fetch(API)
   .then(r => r.text())
-  .then(t => JSON.parse(t))
-    allArticles=data;
-    const s=document.getElementById('articles');
-    data.forEach((a,i)=>{
-      let o=document.createElement('option');
-      o.value=i;
-      o.textContent=a.title;
+  .then(t => {
+    const data = JSON.parse(t);
+
+    allArticles = data;
+
+    const s = document.getElementById('articles');
+    s.innerHTML = "";
+
+    data.forEach((a, i) => {
+      let o = document.createElement('option');
+      o.value = i;
+      o.textContent = a.title;
       s.appendChild(o);
     });
   });
