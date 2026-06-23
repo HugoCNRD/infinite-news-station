@@ -151,24 +151,68 @@ nav{
 
 
 @media(max-width:768px){
-    .section{
-        flex-direction:row;
-        gap:15px;
-        margin:40px auto;
+
+    .hero{
+        height:25vh;
+        background-position:center;
     }
 
-    .box{
-        width:60%;
-        padding:20px;
+    .nav-container{
+        padding:12px 15px;
+    }
+
+    .nav-links{
+        gap:12px;
+        flex-wrap:wrap;
+        justify-content:center;
+        text-align:center;
         font-size:14px;
     }
 
+    .section{
+        width:92%;
+        margin:50px auto;
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .box{
+        width:100%;
+        padding:25px 20px;
+        border-radius:16px;
+    }
+
+    .box h2{
+        font-size:24px;
+        margin-bottom:8px;
+    }
+
+    .box p{
+        font-size:15px;
+        line-height:1.6;
+    }
+
     .icon-side{
-        width:40%;
+        width:100%;
     }
 
     .icon-side a img{
-        max-width:120px;
+        width:160px;
+        max-width:60vw;
+    }
+
+    .footer{
+        padding:25px 15px;
+    }
+
+    .footer .icons{
+        gap:25px;
+        font-size:22px;
+    }
+
+    .footer .legal{
+        font-size:11px;
+        line-height:1.6;
     }
 }
 </style>
