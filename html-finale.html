@@ -33,8 +33,8 @@ if(password!=="ARENDIUZTHEGOAT"){
 <script>
 const API="https://script.google.com/macros/s/AKfycbylJTqN9LTu_vGTqf_AAkF6l84KpaiIW1tqUuxHip1_TraGj-T2o7rLn2OrSLvMgt9R/exec";
 
-const HEADER="";
-const FOOTER="";
+let HEADER="";
+let FOOTER="";
 
 fetch("article-header.txt").then(r=>r.text()).then(h=>HEADER=h);
 fetch("article-footer.txt").then(r=>r.text()).then(f=>FOOTER=f);
