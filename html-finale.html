@@ -42,8 +42,8 @@ fetch("article-footer.txt").then(r=>r.text()).then(f=>FOOTER=f);
 let allArticles=[];
 
 fetch(API)
-  .then(r=>r.json())
-  .then(data=>{
+  .then(r => r.text())
+  .then(t => JSON.parse(t))
     allArticles=data;
     const s=document.getElementById('articles');
     data.forEach((a,i)=>{
