@@ -292,21 +292,21 @@ nav{
 
 
 <div class="search-container">
-    <input type="date" id="dateSearch">
+    <input type="text" id="keywordSearch" placeholder="Search by keyword">
 </div>
 
 <section class="fleet">
 
 
-<a href="#" style="text-decoration: none;">
-    <div class="card" data-date="2026-06-22">
+<a href="https://hugocnrd.github.io/infinite-news-station/near-miss-at-boston.html" style="text-decoration: none;">
+    <div class="card" data-keywords="FAA investigation colision RWA Boston Comercial">
     <div class="card-img">
-        <img src="logoint.jpg">
-        <img src="logoint.jpg">
+        <img src="FAAinvestigation.jpg">
+        <img src="FAAinves.jpg">
     </div>
     <div class="card-content">
-        <h3>No articles yet !</h3>
-        <p>There are no available articles yet. Come back later to check if our journalists have written something. In the meantime, you can check our newsletter !</p>
+        <h3>Near Miss Between Two Commercial Jets </h3>
+        <p>The incident occurred at Boston Logan International Airport</p>
     </div>
 </a>
 </div>
@@ -342,18 +342,23 @@ const observer=new IntersectionObserver(entries=>{
 cards.forEach(card=>observer.observe(card));
 
 
-document.getElementById('dateSearch').addEventListener('change',function(){
-    const selectedDate=this.value;
+document.getElementById('keywordSearch').addEventListener('input', function () {
+    const searchTerm = this.value.toLowerCase().trim();
 
-    cards.forEach(card=>{
-        if(selectedDate==="" || card.dataset.date===selectedDate){
-            card.style.display="block";
-            card.scrollIntoView({
-                behavior:"smooth",
-                block:"start"
-            });
-        }else{
-            card.style.display="none";
+    cards.forEach(card => {
+        const keywords = (card.dataset.keywords || "").toLowerCase();
+
+        if (searchTerm === "" || keywords.includes(searchTerm)) {
+            card.style.display = "block";
+
+            if (searchTerm !== "") {
+                card.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+        } else {
+            card.style.display = "none";
         }
     });
 });
