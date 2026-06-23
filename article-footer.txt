@@ -1,0 +1,55 @@
+<h2 class="section-title">
+Staff
+</h2>
+
+<p>
+Magicalchesecat, Arendiuz and Miss.Linyutong
+</p>
+
+<p>
+Thank you for reading.
+</p>
+
+<p>
+Sincerely,
+<br>
+The journalist team
+</p>
+
+</div>
+</div>
+
+<br/>
+<br/>
+
+</section>
+
+<div class="footer">
+    <div class="icons">
+        <a href="#" class="footer-link"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="footer-link"><i class="fas fa-plane"></i></a>
+        <a href="mailto:#" class="footer-link"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <p class="legal">
+        Infinite News Station<br>
+        Infinite News Station is an independant media and is not affiliated with, endorsed by, or sponsored by Infinite Flight or any real-world company.
+    </p>
+</div>
+
+<script>
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+        }
+    });
+},{threshold:0.2});
+
+cards.forEach(card=>observer.observe(card));
+</script>
+
+</body>
+</html>
