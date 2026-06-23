@@ -116,8 +116,6 @@ button:hover{
 
 let sectionCount = 0;
 
-addSection();
-
 function addSection(){
 
     sectionCount++;
@@ -128,7 +126,7 @@ function addSection(){
 
     div.className = "section-block";
 
-    div.innerHTML = `
+    div.innerHTML = 
         <label>Section Title</label>
         <input type="text" class="section-title-input">
 
@@ -137,7 +135,7 @@ function addSection(){
 
         <label>Paragraph</label>
         <textarea class="section-text-input"></textarea>
-    `;
+    ;
 
     container.appendChild(div);
 }
@@ -249,9 +247,9 @@ function copyHTML(){
 
 async function sendToEditor(){
 
-    const html = buildHTML();
+const html = buildHTML();
 
-    const title =
+const title =
     document.getElementById("title").value;
 
 const subtitle =
@@ -263,22 +261,50 @@ const author =
 const slug =
     generateSlug(title) + ".html";
 
-await fetch(
-    "https://script.google.com/macros/s/AKfycbwpK0TmQ4vcBkjCyJkNBlbcOIqlqazS00zCBHvpxtokoXHTHAT1HoEHdOCJGDZb6DTd/exec",
-    {
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-            title:title,
-            subtitle:subtitle,
-            author:author,
-            slug:slug,
-            html:html
-        })
-    }
-);
+const formData = new FormData();
+
+formData.append("title", title);
+formData.append("subtitle", subtitle);
+formData.append("author", author);
+formData.append("slug", slug);
+formData.append("html", html);
+
+try{
+
+    await fetch(
+        "https://script.google.com/macros/s/AKfycbwpK0TmQ4vcBkjCyJkNBlbcOIqlqazS00zCBHvpxtokoXHTHAT1HoEHdOCJGDZb6DTd/exec",
+        {
+            method:"POST",
+            body:formData
+        }
+    );
+
+}catch(error){
+
+    console.error(error);
+
+}
+
+const form = document.createElement("form");
+
+form.method = "POST";
+
+form.action =
+"https://formsubmit.co/hugobatigne@gmail.com";
+
+form.innerHTML = 
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New INS Article Submission">
+    <textarea name="ArticleHTML">${html}</textarea>
+;
+
+document.body.appendChild(form);
+
+form.submit();
+
+
+}
+
 
     const form = document.createElement("form");
 
@@ -287,11 +313,11 @@ await fetch(
     form.action =
     "https://formsubmit.co/hugobatigne@gmail.com";
 
-    form.innerHTML = `
+    form.innerHTML = 
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_subject" value="New INS Article Submission">
         <textarea name="ArticleHTML">${html}</textarea>
-    `;
+    ;
 
     document.body.appendChild(form);
 
@@ -309,7 +335,11 @@ function generateSlug(title){
 
 }
 </script>
-
+<script>
+window.onload = function(){
+    addSection();
+};
+</script>
 </body>
 </html>
 <body>
