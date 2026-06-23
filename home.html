@@ -256,7 +256,27 @@ a.arendiuz:hover::after{
 
 
 @media(max-width:768px){
-    .burger{display:block}
+
+    .hero{
+        height:28vh;
+    }
+
+    .hero img{
+        max-width:85%;
+        max-height:60%;
+    }
+
+    .scroll-banner p{
+        font-size:14px;
+    }
+
+    .burger{
+        display:block;
+    }
+
+    .nav-container{
+        padding:14px 15px;
+    }
 
     .nav-links{
         position:absolute;
@@ -270,10 +290,73 @@ a.arendiuz:hover::after{
         border-radius:10px;
     }
 
-    .nav-links.active{display:flex}
+    .nav-links.active{
+        display:flex;
+    }
 
-    .section{flex-direction:column;gap:25px}
-    .box,.icon-side{width:100%}
+    .section{
+        width:92%;
+        margin:50px auto;
+        flex-direction:column;
+        gap:25px;
+        text-align:center;
+    }
+
+    .box,
+    .icon-side{
+        width:100%;
+    }
+
+    .box{
+        padding:25px 20px;
+        border-radius:16px;
+    }
+
+    .box h2{
+        font-size:24px;
+        margin-bottom:12px;
+    }
+
+    .box p{
+        font-size:15px;
+        line-height:1.7;
+    }
+
+    .icon-side{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .icon-side img{
+        max-width:180px;
+        width:70%;
+    }
+
+    .icon-side i{
+        font-size:55px;
+    }
+
+    .bottom-banner{
+        height:25vh;
+        padding:20px;
+        text-align:center;
+        font-size:18px;
+    }
+
+    .footer{
+        padding:25px 15px;
+    }
+
+    .footer .icons{
+        gap:25px;
+        font-size:22px;
+    }
+
+    .footer .legal{
+        font-size:11px;
+        line-height:1.6;
+    }
 }
 </style>
 </head>
