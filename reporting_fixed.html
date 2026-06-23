@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico">
+<title>INS Reporting Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#181624;color:white;}
+.container{width:90%;max-width:1000px;margin:40px auto;}
+h1{text-align:center;margin-bottom:30px;}
+.panel{background:#000338;padding:25px;border-radius:16px;margin-bottom:25px;}
+label{display:block;margin-top:15px;margin-bottom:6px;font-weight:600;}
+input,textarea{width:100%;padding:12px;border:none;border-radius:8px;}
+textarea{min-height:180px;resize:vertical;}
+button{background:#26cfed;color:white;border:none;padding:12px 18px;border-radius:8px;cursor:pointer;margin:10px 5px 0 0;}
+button:hover{opacity:0.9;}
+.section-block{background:#111827;padding:20px;border-radius:12px;margin-top:20px;}
+#preview{white-space:pre-wrap;background:#0f172a;padding:20px;border-radius:12px;margin-top:20px;max-height:500px;overflow:auto;}
+.hidden{display:none;}
+@media(max-width:768px){
+.container{width:95%;}
+.panel{padding:18px;}
+textarea{min-height:140px;}
+}
+</style>
+
+<script>
+let sectionCount = 0;
+
+function addSection(){
+    sectionCount++;
+
+    const container = document.getElementById("sections");
+    const div = document.createElement("div");
+
+    div.className = "section-block";
+
+    div.innerHTML = `
+        <label>Section Title</label>
+        <input type="text" class="section-title-input">
+
+        <label>Credit</label>
+        <input type="text" class="section-credit-input">
+
+        <label>Paragraph</label>
+        <textarea class="section-text-input"></textarea>
+    `;
+
+    container.appendChild(div);
+}
+
+function buildHTML(){
+
+    const title = document.getElementById("title").value;
+    const subtitle = document.getElementById("subtitle").value;
+    const author = document.getElementById("author").value;
+
+    let html = "";
+
+    html += `<h1>${title}</h1>\n\n`;
+    html += `<h2>${subtitle}</h2>\n\n`;
+    html += `<div class="author">\nBy ${author}\n</div>\n\n`;
+
+    const titles = document.querySelectorAll(".section-title-input");
+    const credits = document.querySelectorAll(".section-credit-input");
+    const texts = document.querySelectorAll(".section-text-input");
+
+    for(let i=0;i<titles.length;i++){
+
+        html += `<h2 class="section-title">\n${titles[i].value}\n</h2>\n\n`;
+
+        if(credits[i].value.trim() !== ""){
+            html += `<p class="credit">\n${credits[i].value}\n</p>\n\n`;
+        }
+
+        texts[i].value.split("\n").forEach(p=>{
+            if(p.trim() !== ""){
+                html += `<p>\n${p}\n</p>\n\n`;
+            }
+        });
+    }
+
+    html += `<h2 class="section-title">\nSources\n</h2>\n\n`;
+    html += `<ul class="sources-list">\n`;
+
+    document.getElementById("sources").value.split("\n").forEach(source=>{
+        if(source.trim() !== ""){
+            html += `<li>${source}</li>\n`;
+        }
+    });
+
+    html += `</ul>\n`;
+
+    return html;
+}
+
+function generateHTML(){
+    document.getElementById("preview").textContent = buildHTML();
+}
+
+function copyHTML(){
+    navigator.clipboard.writeText(buildHTML());
+    alert("HTML copied");
+}
+
+function generateSlug(title){
+    return title.toLowerCase().trim().replace(/[^a-z0-9 ]/g,'').replace(/\s+/g,'-');
+}
+
+async function sendToEditor(){
+
+    const html = buildHTML();
+
+    const title = document.getElementById("title").value;
+    const subtitle = document.getElementById("subtitle").value;
+    const author = document.getElementById("author").value;
+    const slug = generateSlug(title) + ".html";
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("subtitle", subtitle);
+    formData.append("author", author);
+    formData.append("slug", slug);
+    formData.append("html", html);
+
+    try{
+        await fetch(
+            "https://script.google.com/macros/s/AKfycbwpK0TmQ4vcBkjCyJkNBlbcOIqlqazS00zCBHvpxtokoXHTHAT1HoEHdOCJGDZb6DTd/exec",
+            {
+                method:"POST",
+                body:formData,
+                mode:"no-cors"
+            }
+        );
+    }catch(error){
+        console.error(error);
+    }
+
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "https://formsubmit.co/hugobatigne@gmail.com";
+
+    form.innerHTML = `
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New INS Article Submission">
+        <textarea name="ArticleHTML">${html}</textarea>
+    `;
+
+    document.body.appendChild(form);
+    form.submit();
+}
+
+window.onload = function(){
+    addSection();
+};
+</script>
+</head>
+
+<body>
+
+<script>
+const password = prompt("INS Reporting Password");
+
+if(password !== "#INS2026-reporting4IF"){
+    alert("Access denied");
+    window.location.replace("https://hugocnrd.github.io/infinite-news-station/home.html");
+}
+</script>
+
+<div class="container">
+
+<h1>Infinite News Station Reporting Portal</h1>
+
+<div class="panel">
+
+<label>Article Title</label>
+<input type="text" id="title">
+
+<label>Subtitle</label>
+<input type="text" id="subtitle">
+
+<label>Author</label>
+<input type="text" id="author">
+
+<label>Sources (one per line)</label>
+<textarea id="sources"></textarea>
+
+<div id="sections"></div>
+
+<button onclick="addSection()">Add Section</button>
+<button onclick="generateHTML()">Preview HTML</button>
+<button onclick="copyHTML()">Copy HTML</button>
+<button onclick="sendToEditor()">Send To Editor</button>
+
+</div>
+
+<div id="preview"></div>
+
+</div>
+
+</body>
+</html>
