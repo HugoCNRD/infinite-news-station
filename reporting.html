@@ -247,7 +247,7 @@ function copyHTML(){
 
 }
 
-function sendToEditor(){
+async function sendToEditor(){
 
     const html = buildHTML();
 
@@ -263,7 +263,7 @@ const author =
 const slug =
     generateSlug(title) + ".html";
 
-fetch(
+await fetch(
     "https://script.google.com/macros/s/AKfycbwpK0TmQ4vcBkjCyJkNBlbcOIqlqazS00zCBHvpxtokoXHTHAT1HoEHdOCJGDZb6DTd/exec",
     {
         method:"POST",
