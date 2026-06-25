@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinite News Station - Newsletter for June 26th</title>
+<link rel="icon" href="favicon.ico">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a2d9d5c66d.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#181624;
+    color:#222;
+    overflow-x:hidden;
+}
+
+.hero{
+    height:40vh;
+    background:url('Bandeau1.jpg') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+@media(max-width:768px){
+    .hero{
+        height:25vh;
+    }
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.35);
+}
+
+.hero img{
+    position:relative;
+    z-index:2;
+    max-height:70%;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    backdrop-filter:blur(10px);
+    background:linear-gradient(90deg,#26cfed,#000338);
+    z-index:1000;
+}
+
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    padding:12px 20px;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    position:relative;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    bottom:-5px;
+    left:0;
+    width:0;
+    height:2px;
+    background:white;
+    transition:0.3s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.search-container{
+    width:100%;
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    background:#181624;
+}
+
+.fleet{
+    max-width:1100px;
+    margin:80px auto;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:0 20px;
+}
+
+.card{
+    background:#181624;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    transform:translateY(60px);
+    opacity:0;
+    transition:1.2s ease;
+}
+
+.card.visible{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.card-content{
+    max-width:950px;
+    margin:auto;
+    padding:45px;
+    color:white;
+}
+
+.card-content h1{
+    color:white;
+    margin-bottom:10px;
+}
+
+.card-content h2{
+    color:#cbd5e1;
+    font-size:18px;
+    font-weight:400;
+    margin-bottom:25px;
+}
+
+.card-content p{
+    color:#f1f5f9;
+    font-size:17px;
+    line-height:1.9;
+    margin-bottom:24px;
+}
+
+.section-title{
+    color:white;
+    font-size:2rem;
+    font-weight:600;
+    margin-top:60px;
+    margin-bottom:25px;
+    border-top:1px solid rgba(255,255,255,.1);
+    padding-top:40px;
+}
+
+.credit{
+    color:#94a3b8;
+    font-style:italic;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.news-image{
+    width:100%;
+    max-width:950px;
+    display:block;
+    margin:40px auto;
+    border-radius:12px;
+}
+
+.back-button{
+    display:inline-block;
+    margin-bottom:30px;
+    padding:12px 18px;
+    background:#26cfed;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.back-button:hover{
+    opacity:0.85;
+}
+
+.author{
+    color:#cbd5e1;
+    margin:20px 0 30px 0;
+    font-style:italic;
+}
+
+.bottom-banner{
+    height:40vh;
+    background:url('Bandeaubas.jpg') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:22px;
+    font-weight:600;
+}
+
+.footer{
+    text-align:center;
+    padding:20px;
+    background:#000338;
+    color:white;
+}
+
+.footer .icons{
+    margin-bottom:10px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    font-size:20px;
+}
+
+.footer-link{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.footer-link:hover{
+    transform:scale(1.2);
+    color:#94a3b8;
+}
+
+.footer .legal{
+    font-size:12px;
+    opacity:0.7;
+    line-height:1.4;
+    max-width:900px;
+    margin:auto;
+}
+
+@media(max-width:768px){
+
+    .hero{
+        height:24vh;
+    }
+
+    .hero img{
+        max-width:85%;
+        max-height:60%;
+    }
+
+    .nav-container{
+        padding:12px 15px;
+    }
+
+    .nav-links{
+        gap:12px;
+        flex-wrap:wrap;
+        justify-content:center;
+        text-align:center;
+        font-size:14px;
+        line-height:1.5;
+    }
+
+    .fleet{
+        margin:30px auto;
+        padding:0 10px;
+    }
+
+    .card{
+        border-radius:16px;
+    }
+
+    .card-content{
+        padding:20px;
+    }
+
+    .card-content h1{
+        font-size:1.8rem;
+        line-height:1.3;
+    }
+
+    .card-content h2:not(.section-title){
+        font-size:16px;
+        line-height:1.5;
+        margin-bottom:20px;
+    }
+
+    .card-content p{
+        font-size:15px;
+        line-height:1.8;
+        margin-bottom:20px;
+    }
+
+    .section-title{
+        font-size:1.8rem;
+        line-height:1.25;
+        margin-top:50px;
+        margin-bottom:20px;
+        padding-top:25px;
+        padding-left:12px;
+        border-left:3px solid #26cfed;
+    }
+
+    .author{
+        font-size:14px;
+    }
+
+    .credit{
+        font-size:13px;
+        line-height:1.6;
+    }
+
+    .news-image{
+        margin:25px auto;
+        border-radius:10px;
+    }
+
+    .back-button{
+        width:100%;
+        text-align:center;
+        padding:14px;
+        margin-bottom:25px;
+    }
+
+    .sources-list{
+        padding-left:20px;
+    }
+
+    .sources-list li{
+        font-size:14px;
+        line-height:1.7;
+        margin-bottom:8px;
+    }
+
+    .bottom-banner{
+        height:25vh;
+        padding:20px;
+        text-align:center;
+        font-size:18px;
+    }
+
+    .footer{
+        padding:25px 15px;
+    }
+
+    .footer .icons{
+        gap:25px;
+        font-size:22px;
+    }
+
+    .footer .legal{
+        font-size:11px;
+        line-height:1.6;
+    }
+}
+
+    .card-content{
+        padding:25px;
+    }
+
+.section-title{
+    color:white;
+    font-size:2.8rem;
+    font-weight:700;
+    line-height:1.2;
+
+    margin-top:80px;
+    margin-bottom:30px;
+
+    padding-top:45px;
+    padding-left:18px;
+
+    border-top:2px solid rgba(255,255,255,0.12);
+    border-left:4px solid #26cfed;
+
+    letter-spacing:-1px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="https://hugocnrd.github.io/infinite-news-station/home.html"><i class="fas fa-info-circle"></i>Home</a>
+            <a href="https://hugocnrd.github.io/infinite-news-station/newsletter.html"><i class="fas fa-plane"></i>Newsletter</a>
+            <a href="https://hugocnrd.github.io/infinite-news-station/articles.html"><i class="fas fa-star"></i>Articles</a>
+            <a href="https://hugocnrd.github.io/infinite-news-station/us.html"><i class="fas fa-users"></i>Who we are</a>
+            <a href="https://hugocnrd.github.io/infinite-news-station/contact.html"><i class="fas fa-paper-plane"></i>Contact</a>
+        </div>
+    </div>
+</nav>
+
+<div class="search-container"></div>
+
+<section class="fleet">
+
+<div class="card visible">
+<div class="card-content">
+
+<a class="back-button" href="https://hugocnrd.github.io/infinite-news-station/newsletter.html">
+<i class="fas fa-arrow-left"></i> Back to Newsletters
+</a>
+<h1>Newsletter for June 26th, 2026</h1>
+
+<h2>IF48, the 60°N & S announcement, Asiana and Korean Air merger, a statement from the CEO of the future VA Kangaroo Atlantic Airways and many more !</h2>
+
+<img src=“60wallWIP.jpg" class="news-image">
+
+<div class="author">
+By I.N.S journalist team
+</div>
+
+<h2 class="section-title">
+IF48 Edition 9 is taking place this week-end
+</h2>
+
+<img src="4K (1).jpg" class="news-image">
+
+<p class="credit">
+Dan
+</p>
+
+<p>
+“Expect busy airspaces and a weekend packed with traffic across some of the region’s busiest gateways.” This is how Dan teased us about the next IF48 series event, set to take place in South Asia - including India and the tropical islands of the Maldives. As the IF staff team launches the 9th edition of this series, we thought it would be a good idea to give you some additional information ! 
+</p>
+
+<p>
+First and foremost, IF48 is a series of events taking place the last week-end of each month, and featuring airports to bring traffic to life. During these two days, the IF servers usually experience a growth in number of pilots connected, and the featured region turns airports commonly forgotten by users into major hubs. IFATC ensures full coverage of the region, and we often see higher traffic rates than in the real world ! 
+</p>
+
+<p>
+The first edition took place across the Atlantic, featuring major hubs such as EGLL, LFPG and KJFK, but following ones have focused on less known airports. An edition even gave general aviation a focus, which was unexpected but particularly welcomed by the community. 
+</p>
+
+<p>
+Back to the 9th edition, named “Southern Connexions”. Featured airports are Male (VRMM), Mumbai (VALL), Bengaluru (VOBL) and Chennai (VOMM). All officials group flight details are included in the pinned IFC post. At the moment your fellow journalist is writing these lines, the next edition poll winner seems to be Africa, though it will be a tight race with South America. You can be assured we will give you more details about this !
+</p>
+
+<h2 class="section-title">
+Asiana Airlines’s Star Alliance Exit
+</h2>
+
+<img src="asianamerger.jpg" class="news-image">
+
+<p class="credit">
+Asiana Airlines
+</p>
+
+<p>
+In a deal finalized in December 2024 worth 1.3 billion, Korean Air purchased Asiana Airlines. A Seoul based operator with a decent fleet and reputation, the deal had originally been struck in the depth of the pandemic in 2020. Asiana Air is set to officially merge into Korean Air on Dec 16 2026, this will likely prove extremely beneficial to Korean Air. Let me know your thoughts on this merger. 
+</p>
+
+<h2 class="section-title">
+Kangaroo Atlantic Airways CEO Airbusflyer32 releases a statement exclusively for the I.N.S readers
+</h2>
+
+<img src="KAAVA.jpg" class="news-image">
+
+<p class="credit">
+KAA VA Logo - Airbusflyer32
+</p>
+
+<p>
+"Kangaroo Atlantic Airways is continuing to develop a website and so much more in the background but is struggling with some hurdles at this time but we hope to be solving these issues soon and have Kangaroo Atlantic Open to the Public soon but it is not guaranteed but we hope to see some people wanting to join and while it will take time we will open Pilot Applications in February 2027 If we get approved in that time frame and we are proud of our team and we are still looking for more executives as we still have executive roles open”
+</p>
+
+<p>
+- Airbusflyer32 about KAA
+</p>
+
+<h2 class="section-title">
+An American Airlines flight is derrouted after a passenger tries to bite another
+</h2>
+
+<p>
+To be determined
+</p>
+
+<h2 class="section-title">
+60° N & S announcement
+</h2>
+
+<img src=“60wallWIP.jpg" class="news-image">
+
+<p class="credit">
+Jason WIP on discord
+</p>
+
+<p>
+Yesterday evening, an announcement was made on IF discord and social media. The picture in this WIP showed a part of the terrain north of 60°N, with mountainous scenery :  According to Jason, our dear developer Cameron succeeded in fixing a long awaited feature : the famous “60°N and 60°S wall”, as well as the flat topography above and below those lines. Back in 2019, a blog post explained that Infinite Flight is using the SRTM database - powered by NASA - to create imagery, and that this particular database did not have any terrain data above 60°N and below 60°S. But this has finally come to an end ! In a future update, this will be solved, and flying past the poles will not only have meaning but will be beautiful ! Let me know your thoughts on this, what will be your first flight in the area ?
+</p>
+
+<h2 class="section-title">
+TAAG Angola Airlines starts flight to Guangzhou
+</h2>
+
+<img src="angolaairlines.jpg" class="news-image">
+
+<p class="credit">
+Angola NewsWire
+</p>
+
+<p>
+The only direct passenger air route between China and Angola officially launches
+</p>
+
+<p>
+Early morning on June 24, Angola Airlines Flight DT692 operated by a Boeing 787-9 landed smoothly at Guangzhou Baiyun International Airport, marking the official opening of the Luanda ↔ Guangzhou direct service. This is currently the sole non-stop passenger route connecting the two countries.
+</p>
+
+<p>
+Initially, the service runs once weekly: Flight DT692 departs Luanda at 18:50 every Tuesday and arrives in Guangzhou at 07:50 the next day; the return flight DT693 takes off from Guangzhou at 00:15 every Friday and lands in Luanda at 13:15. The airline plans to increase frequencies to three weekly flights later and deploy Boeing 777 wide-body jets to add capacity. This route connects the Guangdong-Hong Kong-Macao Greater Bay Area with Southern Africa by air.
+</p>
+
+<h2 class="section-title">
+The A380 gets an airworthiness directive.
+</h2>
+
+<p>
+On June 22 the European Union Aviation Safety Agency issued an airworthiness directive for the A380. “It has been determined that the cracks found on certain aeroplanes could reduce the structural integrity of the wing” said the agency in the airworthiness directive that was on the 22th of June. The A380 has faced such problems before, the A380 had been grounded for several weeks in 2012. The European Union Aviation Safety Agency has said that 16 aircraft need additional checks, 15 are owned and operated by Emirates and 1 is operated and owned by Qantas. 
+</p>
+
+<h2 class="section-title">
+Editor’s special: Is the MacBook Neo good enough?
+</h2>
+
+<p>
+To be filed later
+</p>
+
+<h2 class="section-title">
+Sources
+</h2>
+
+<ul class="sources-list">
+<li>“IF48 Edition 9 - Southern Invasion” pinned post by Dan on Infinite Flight Community website</li>
+<li>Travel weekly Media - “Asiana to exit Star Alliance ahead of Korean Air merger”, Jun 23, 2026</li>
+<li>Kangaroo Atlantic Airways CEO - Airbusflyer32 - releases a statement exclusively for our readers </li>
+<li>YahooNews - “He tries to fight with everyone : An American Airlines pilot warns the police after a passenger tried to bite another mid flight”, Jun 22, 2026</li>
+<li>Jason shared WIP on discord and social media</li>
+<li>Angola Newswire - “TAAG Angola Airlines Introduces New Route to Guangzhou, China”</li>
+<li>The Edge media - “Airbus A380 aircraft require checks for possible wing cracks”, Jun 24, 2026</li>
+</ul>
+
+
+<h2 class="section-title">
+Staff
+</h2>
+
+<p>
+Magicalchesecat, Arendiuz, Noah6132 and Miss.Linyutong
+</p>
+
+<p>
+Thank you for reading.
+</p>
+
+<p>
+Sincerely,
+<br>
+The journalist team
+</p>
+
+</div>
+</div>
+
+<br/>
+<br/>
+
+</section>
+
+<div class="footer">
+    <div class="icons">
+        <a href="#" class="footer-link"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="footer-link"><i class="fas fa-plane"></i></a>
+        <a href="mailto:#" class="footer-link"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <p class="legal">
+        Infinite News Station<br>
+        Infinite News Station is an independant media and is not affiliated with, endorsed by, or sponsored by Infinite Flight or any real-world company.
+    </p>
+</div>
+
+<script>
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+        }
+    });
+},{threshold:0.2});
+
+cards.forEach(card=>observer.observe(card));
+</script>
+
+</body>
+</html>
